@@ -19,18 +19,16 @@ public class CustomerRepositoryJdbc implements CustomerRepository {
 	private static Logger logger = Logger.getLogger(CustomerRepositoryJdbc.class);
 	
 	/*Singleton transformation of JDBC implementation object */
-	private static CustomerRepositoryJdbc customerDaoJdbc;
+	private static CustomerRepository customerRepository;
 	
-	private CustomerRepositoryJdbc() {
-		
-	}
+	private CustomerRepositoryJdbc() {}
 	
-	public static CustomerRepositoryJdbc getCustomerDaoJdbc() {
-		if(customerDaoJdbc == null) {
-			customerDaoJdbc = new CustomerRepositoryJdbc();
+	public static CustomerRepository getInstance() {
+		if(customerRepository == null) {
+			customerRepository = new CustomerRepositoryJdbc();
 		}
 		
-		return customerDaoJdbc;
+		return customerRepository;
 	}
 	
 	/* Regular insert statement for Customer */
